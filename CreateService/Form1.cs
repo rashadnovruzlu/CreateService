@@ -25,8 +25,8 @@ namespace CreateService
         private void btnShowModelFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
-            // folder.ShowDialog();
-            txtModel.Text = @"D:\Git\DMS\src\Model\DB Tables";//folder.SelectedPath;
+            folder.ShowDialog();
+            txtModel.Text = folder.SelectedPath;
 
             foreach (var item in Directory.GetFiles(txtModel.Text))
             {
@@ -43,7 +43,7 @@ namespace CreateService
 
                 else if (s.Length > 1)
                 {
-                    for (int i = 1; i < s.Length; i++)
+                    for (int i = 0; i < s.Length; i++)
                     {
                         name += MakeCapitalText(s[i]);
                     }
@@ -197,7 +197,7 @@ namespace CreateService
             string result = "";
             for (int i = 0; i < k.Length; i++)
             {
-                result += i == 0 ? k[i].ToString().ToUpper() : k[i].ToString().ToLower();
+                result += i == 0 ? k[i].ToString().ToUpperInvariant() : k[i].ToString().ToLowerInvariant();
             }
 
             return result;
