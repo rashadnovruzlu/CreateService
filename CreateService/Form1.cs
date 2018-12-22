@@ -183,6 +183,8 @@ namespace CreateService
                 #endregion
 
             }
+
+            MessageBox.Show("Əməliyyat uğurla yerinə yetirildi", "Məlumat", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
