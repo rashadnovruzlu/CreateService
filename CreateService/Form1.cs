@@ -25,36 +25,40 @@ namespace CreateService
         private void btnShowModelFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
-            folder.ShowDialog();
-            txtModel.Text = folder.SelectedPath;
-
-            foreach (var item in Directory.GetFiles(txtModel.Text))
+            if (folder.ShowDialog() == DialogResult.OK)
             {
-                Model model = new Model();
-                model.FullName = item;
-                string fileName = Path.GetFileName(item).Replace(".cs", "");
-                model.ClassName = fileName;
-                string[] s = fileName.Split('_');
-                string name = String.Empty;
-                if (s.Length == 1)
-                {
-                    name = MakeCapitalText(s[0]);
-                }
 
-                else if (s.Length > 1)
+                txtModel.Text = folder.SelectedPath;
+
+                foreach (var item in Directory.GetFiles(txtModel.Text))
                 {
-                    for (int i = 0; i < s.Length; i++)
+                    Model model = new Model();
+                    model.FullName = item;
+                    string fileName = Path.GetFileName(item).Replace(".cs", "");
+                    model.ClassName = fileName;
+                    string[] s = fileName.Split('_');
+                    string name = String.Empty;
+                    if (s.Length == 1)
                     {
-                        name += MakeCapitalText(s[i]);
+                        name = MakeCapitalText(s[0]);
                     }
 
+                    else if (s.Length > 1)
+                    {
+                        for (int i = 0; i < s.Length; i++)
+                        {
+                            name += MakeCapitalText(s[i]);
+                        }
+
+                    }
+                    model.Name = name;
+
+                    _models.Add(model);
+
+                    listBox1.Items.Add(fileName);
                 }
-                model.Name = name;
-
-                _models.Add(model);
-
-                listBox1.Items.Add(fileName);
             }
+
         }
 
         private void btnAddAll_Click(object sender, EventArgs e)
