@@ -94,6 +94,7 @@
             this.txtRepository.Name = "txtRepository";
             this.txtRepository.Size = new System.Drawing.Size(389, 22);
             this.txtRepository.TabIndex = 2;
+            this.txtRepository.Text = "C:\\Rep";
             // 
             // label1
             // 
@@ -120,6 +121,7 @@
             this.txtService.Name = "txtService";
             this.txtService.Size = new System.Drawing.Size(389, 22);
             this.txtService.TabIndex = 2;
+            this.txtService.Text = "C:\\Service";
             // 
             // Service
             // 
