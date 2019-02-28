@@ -6,4 +6,5 @@
         public string ClassName { get; set; }
         public string FullName { get; set; }
     }
+
 }
